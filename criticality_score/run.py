@@ -525,7 +525,7 @@ def get_repository(url):
     if parsed_url.netloc.endswith('github.com'):
         repo = GitHubRepository(get_github_auth_token().get_repo(repo_url))
         return repo
-    if 'gitlab' in parsed_url.netloc:
+    if 'gitlab' in parsed_url.netloc or 'code.ornl.gov' in parsed_url.netloc:
         host = parsed_url.scheme + '://' + parsed_url.netloc
         token_obj = get_gitlab_auth_token(host)
         repo_url_encoded = urllib.parse.quote_plus(repo_url)
